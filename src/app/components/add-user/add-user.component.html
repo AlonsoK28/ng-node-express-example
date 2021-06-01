@@ -1,11 +1,13 @@
 <h2 mat-dialog-title>Add new User</h2>
 <mat-dialog-content class="mat-typography">
+    <h3>Add all the info neeed for this new user in the system</h3>
     <div class="a" [formGroup]="addUserForm">
         <div fxLayout="row" fxLayoutAlign="space-around center">
             <mat-form-field appearance="fill">
                 <mat-label>Id</mat-label>
                 <input matInput
-                formControlName="IdUser">
+                formControlName="IdUser"
+                type="number">
             </mat-form-field>
     
             <mat-form-field appearance="fill">
@@ -32,7 +34,7 @@
     </div>
     </div>
     <div fxLayout="row" fxLayoutAlign="end center">
-        Status <mat-slide-toggle ngModel name="enableWifi">Active</mat-slide-toggle>
+        <mat-slide-toggle ngModel name="userActive">Status user</mat-slide-toggle>
 
     </div>
 </mat-dialog-content>
