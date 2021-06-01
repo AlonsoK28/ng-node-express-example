@@ -12,7 +12,7 @@ export class UserComponent implements OnInit {
   loaded: boolean;
   userListData: User[] = [];
 
-  constructor( private userService: UserService ) { 
+  constructor( private userService: UserService ) {
     this.loaded = false;
   }
 

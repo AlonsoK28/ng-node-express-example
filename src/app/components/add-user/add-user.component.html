@@ -1,0 +1,44 @@
+<h2 mat-dialog-title>Add new User</h2>
+<mat-dialog-content class="mat-typography">
+    <div class="a" [formGroup]="addUserForm">
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+            <mat-form-field appearance="fill">
+                <mat-label>Id</mat-label>
+                <input matInput
+                formControlName="IdUser">
+            </mat-form-field>
+    
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput
+                formControlName="nameUser">
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+    
+            <mat-form-field appearance="fill">
+                <mat-label>Mail</mat-label>
+                <input matInput
+                formControlName="mailUser">
+            </mat-form-field>
+    
+            <mat-form-field appearance="fill">
+                <mat-label>Role</mat-label>
+                <mat-select formControlName="roleUser">
+                    <mat-option value="USER">User</mat-option>
+                    <mat-option value="ADMIN">Administrator</mat-option>
+                </mat-select>
+            </mat-form-field>
+    </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="end center">
+        Status <mat-slide-toggle ngModel name="enableWifi">Active</mat-slide-toggle>
+
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button cdkFocusInitial
+    [disabled]="addUserForm.invalid"
+    (click)="addNewUser()">Save</button>
+</mat-dialog-actions>

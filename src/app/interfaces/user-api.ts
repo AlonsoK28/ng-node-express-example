@@ -6,3 +6,9 @@ export interface UserApi {
     message: string;
     ok: boolean;
 }
+
+export interface addNewUserApi {
+    code: number;
+    message: string;
+    ok: boolean;
+}
