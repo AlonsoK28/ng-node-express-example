@@ -10,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 export class UserComponent implements OnInit {
 
   loaded: boolean;
-  userListData: Users[] = [];
+  userListData:any;
 
   constructor( private userService: UserService ) { 
     this.loaded = false;

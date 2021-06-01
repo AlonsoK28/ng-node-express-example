@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { HttpClientModule } from '@angular/common/http';
+
 // modules
 import { ToolbarModule } from './components/toolbar/module/toolbar.module';
 import { UserListModule } from './components/user-list/module/user-list.module';
@@ -22,7 +24,8 @@ import { UserComponent } from './pages/user/user.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     ToolbarModule,
-    UserListModule
+    UserListModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
