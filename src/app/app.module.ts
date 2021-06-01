@@ -7,16 +7,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // modules
 import { ToolbarModule } from './components/toolbar/module/toolbar.module';
+import { UserListModule } from './components/user-list/module/user-list.module';
+
+// pages
+import { UserComponent } from './pages/user/user.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ToolbarModule
+    ToolbarModule,
+    UserListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
