@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { User } from 'src/app/interfaces/user';
+import { User, UserType } from 'src/app/interfaces/user';
 
 export interface Section {
   name: string;
@@ -15,6 +15,7 @@ export class UserListComponent implements OnInit {
 
 
   @Input() userListData: User[] = [];
+  myUserType = UserType;
 
   constructor() { }
 

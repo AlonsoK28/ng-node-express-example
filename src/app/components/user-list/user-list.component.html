@@ -1,7 +1,8 @@
 <mat-list>
     <div mat-subheader>Folders</div>
     <mat-list-item *ngFor="let user of userListData">
-        <mat-icon mat-list-icon>person</mat-icon>
+        <mat-icon *ngIf="user.role === myUserType.USER" mat-list-icon>person</mat-icon>
+        <mat-icon *ngIf="user.role === myUserType.ADMIN" mat-list-icon>star_border</mat-icon>
         <div mat-line>{{user.name}}</div>
         <div mat-line> {{user.mail }} </div>
     </mat-list-item>
