@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 // interfaces
-import { Users } from '../interfaces/users';
+import { UserApi } from '../interfaces/user-api';
 
 // environment
 import { environment } from '../../environments/environment';
-import { UsersApi } from '../interfaces/users-api';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +16,7 @@ export class UserService {
 
   getUserList() {
     const url = `${environment.apiEndpoint}/get-users`;
-    return this.http.get<UsersApi>(url);
+    return this.http.get<UserApi>(url);
   }
 
 

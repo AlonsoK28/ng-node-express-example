@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Users, UserType } from 'src/app/interfaces/users';
+import { User} from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 export class UserComponent implements OnInit {
 
   loaded: boolean;
-  userListData:any;
+  userListData: User[] = [];
 
   constructor( private userService: UserService ) { 
     this.loaded = false;
