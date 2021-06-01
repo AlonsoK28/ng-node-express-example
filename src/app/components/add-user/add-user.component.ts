@@ -7,6 +7,7 @@ import { UserService } from 'src/app/services/user.service';
 
 // material
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialogRef } from '@angular/material/dialog';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class AddUserComponent implements OnInit {
 
 
   constructor( private userService: UserService,
-               private _snackBar: MatSnackBar ) {
+               private _snackBar: MatSnackBar,
+               private dialogRef: MatDialogRef<AddUserComponent> ) {
     this.addUserForm = new FormGroup({
       IdUser: new FormControl('', [Validators.required]),
       nameUser: new FormControl('', [Validators.required]),
@@ -49,6 +51,9 @@ export class AddUserComponent implements OnInit {
     .subscribe(
       data =>{
         if(data.ok){
+          // close dialog from another component 
+          // https://stackoverflow.com/questions/57822013/close-material-dialog-from-different-component-angular
+          this.dialogRef.close();
           this._snackBar.open(data.message, 'OK');
         }else{
           this._snackBar.open(data.message, 'Dismiss');
