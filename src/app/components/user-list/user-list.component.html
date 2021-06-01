@@ -1,15 +1,15 @@
 <mat-list>
     <div mat-subheader>Folders</div>
-    <mat-list-item *ngFor="let folder of folders">
+    <mat-list-item *ngFor="let user of userListData">
         <mat-icon mat-list-icon>person</mat-icon>
-        <div mat-line>{{folder.name}}</div>
-        <div mat-line> {{folder.updated | date}} </div>
+        <div mat-line>{{user.name}}</div>
+        <div mat-line> {{user.mail }} </div>
     </mat-list-item>
     <mat-divider></mat-divider>
-    <div mat-subheader>Notes</div>
+    <!-- <div mat-subheader>Notes</div>
     <mat-list-item *ngFor="let note of notes">
         <mat-icon mat-list-icon>star_border</mat-icon>
         <div mat-line>{{note.name}}</div>
         <div mat-line> {{note.updated | date}} </div>
-    </mat-list-item>
+    </mat-list-item> -->
 </mat-list>
