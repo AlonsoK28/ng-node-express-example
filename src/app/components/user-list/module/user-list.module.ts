@@ -8,6 +8,11 @@ import { UserListComponent } from '../user-list.component';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+
+
+// 3-party
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -18,7 +23,9 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     MatListModule,
     MatDividerModule,
-    MatIconModule
+    MatIconModule,
+    FlexLayoutModule,
+    MatButtonModule
   ],
   exports:[
     UserListComponent
