@@ -17,11 +17,17 @@
                     class="hand-icon">
                     star_border
                 </mat-icon>
-                <div mat-line>{{user.name}}  
-                    <span *ngIf="!user.active" 
-                        class="disabled-user">
-                        [ this user is currently deactivated ]
-                    </span>
+                <div mat-line>
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <div fxLayout="row" fxLayoutAlign="center center">
+                            {{user.name}}  
+                            &nbsp;
+                            <span *ngIf="!user.active" 
+                                class="disabled-user">
+                                [ this user is currently deactivated ]
+                            </span>
+                        </div>
+                    </div>
                 </div> 
                 <div mat-line> {{user.mail }} </div>
                 <p>
