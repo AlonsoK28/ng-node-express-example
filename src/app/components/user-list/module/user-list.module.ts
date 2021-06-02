@@ -7,6 +7,7 @@ import { UserListComponent } from '../user-list.component';
 // modules
 import { AdduserModule } from '../../add-user/module/adduser.module'
 import { DeleteUserModule } from '../../delete-user/module/delete-user.module';
+import { EditUserModule } from '../../edit-user/module/edit-user.module';
 
 // material
 import { MatListModule } from '@angular/material/list';
@@ -37,6 +38,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatBadgeModule,
     MatTooltipModule,
     DeleteUserModule,
+    EditUserModule
   ],
   exports:[
     UserListComponent

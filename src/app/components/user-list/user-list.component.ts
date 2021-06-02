@@ -8,6 +8,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddUserComponent } from '../add-user/add-user.component';
 import { UserService } from 'src/app/services/user.service';
 import { DeleteUserComponent } from '../delete-user/delete-user.component';
+import { EditUserComponent } from '../edit-user/edit-user.component';
 
 
 export interface Section {
@@ -68,7 +69,7 @@ export class UserListComponent implements OnInit {
     }
 
     const dialogRef = this.dialog.open(
-      ConfirmDeleteUserComponent,
+      DeleteUserComponent,
       dialogConfig
     );
 
@@ -78,6 +79,33 @@ export class UserListComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
       if (result.deletedUser) {
         this.userListData.splice(index, 1);
+        this.cdref.detectChanges();
+      }
+    });
+  }
+  
+  editUser(userData:User, index:number){
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      userData
+    };
+    dialogConfig.width = '50%';
+    dialogConfig.minHeight = 'calc(50vh - 90px)';
+    dialogConfig.height = 'auto';
+
+    const dialogRef = this.dialog.open(
+      EditUserComponent,
+      dialogConfig
+    );
+
+    dialogRef
+    .afterClosed()
+    .subscribe(result => {
+      if (result.userEditInfo) {
+        this.userListData[index] = result.userEditInfo;
         this.cdref.detectChanges();
       }
     });

@@ -37,4 +37,16 @@ export class UserService {
     return this.http.delete<UserApiResponseGeneric>(url);
   }
 
+  editUser(user: User){
+    const url = `${environment.apiEndpoint}/edit-user`;
+    const body = {
+      id: user.id,
+      name: user.name,
+      active: user.active,
+      mail: user.mail,
+      role: user.role
+    };
+    return this.http.post<UserApiResponseGeneric>(url, body);
+  }
+
 }
