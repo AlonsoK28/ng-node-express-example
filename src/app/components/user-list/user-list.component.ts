@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { User, UserType } from 'src/app/interfaces/user';
 
 // material
@@ -27,6 +27,7 @@ export class UserListComponent implements OnInit {
   myUserType = UserType;
 
   constructor( public dialog: MatDialog,
+               private cdref: ChangeDetectorRef,
                 private userService: UserService ) { }
 
   ngOnInit(): void {
@@ -45,9 +46,19 @@ export class UserListComponent implements OnInit {
       AddUserComponent,
       dialogConfig
     );
+
+    dialogRef
+    .afterClosed()
+    .subscribe( result => {
+      console.log(`Dialog result: ${result}`);
+      if(result){
+        this.userListData.push((result.newUser));
+        this.cdref.detectChanges();
+      }
+    });
   }
 
-  deleteUser(userData:User){
+  deleteUser(userData:User, index:number){
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.data = {
@@ -58,6 +69,16 @@ export class UserListComponent implements OnInit {
       ConfirmDeleteUserComponent,
       dialogConfig
     );
+
+    dialogRef
+    .afterClosed()
+    .subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      if (result.deletedUser) {
+        this.userListData.splice(index, 1);
+        this.cdref.detectChanges();
+      }
+    });
   }
 
 }

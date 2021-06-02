@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
@@ -20,7 +20,8 @@ export class ConfirmDeleteUserComponent implements OnInit {
 
   constructor( private userService: UserService,
                private _snackBar: MatSnackBar,
-               @Inject(MAT_DIALOG_DATA) public data: ConfirmDeleteUserData ) {
+               @Inject(MAT_DIALOG_DATA) public data: ConfirmDeleteUserData,
+               private dialogRef: MatDialogRef<ConfirmDeleteUserComponent> ) {
     this.confirmDeleteUserForm = new FormGroup({
       confirm: new FormControl('', [Validators.required, this.confirmDelete])
     });
@@ -35,6 +36,7 @@ export class ConfirmDeleteUserComponent implements OnInit {
       .deleteUser(this.data.userData.id)
       .subscribe(data => {
         if (data.ok) {
+          this.dialogRef.close({ deletedUser: true });
           this._snackBar.open(data.message, 'OK');
         } else {
           this._snackBar.open(data.message, 'dismiss');

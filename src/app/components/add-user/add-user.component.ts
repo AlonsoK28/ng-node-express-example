@@ -19,7 +19,6 @@ export class AddUserComponent implements OnInit {
 
   addUserForm: FormGroup;
 
-
   constructor( private userService: UserService,
                private _snackBar: MatSnackBar,
                private dialogRef: MatDialogRef<AddUserComponent> ) {
@@ -53,7 +52,7 @@ export class AddUserComponent implements OnInit {
         if(data.ok){
           // close dialog from another component 
           // https://stackoverflow.com/questions/57822013/close-material-dialog-from-different-component-angular
-          this.dialogRef.close();
+          this.dialogRef.close({ newUser: userData});
           this._snackBar.open(data.message, 'OK');
         }else{
           this._snackBar.open(data.message, 'dismiss');

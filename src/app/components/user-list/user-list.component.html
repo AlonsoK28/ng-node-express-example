@@ -1,7 +1,7 @@
 <div fxLayout="row" fxLayoutAlign="center center">
     <mat-list>
         <div mat-subheader>Users in Database</div>
-        <mat-list-item *ngFor="let user of userListData">
+        <mat-list-item *ngFor="let user of userListData; index as i;">
             <mat-icon *ngIf="user.role === myUserType.USER" 
                 mat-list-icon
                 [matBadge]="user.id"
@@ -25,7 +25,7 @@
             <div mat-line> {{user.mail }} </div>
             <p>
                 <mat-icon mat-list-icon class="hand-icon"
-                (click)="deleteUser(user)">delete</mat-icon>
+                (click)="deleteUser(user, i)">delete</mat-icon>
                 <mat-icon mat-list-icon class="hand-icon">edit</mat-icon>
             </p>
         </mat-list-item>
