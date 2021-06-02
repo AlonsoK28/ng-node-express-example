@@ -47,7 +47,7 @@ export class AddUserComponent implements OnInit {
     };
 
     this.userService
-      .addNewUser(userData)
+    .addNewUser(userData)
     .subscribe(
       data =>{
         if(data.ok){
@@ -56,7 +56,7 @@ export class AddUserComponent implements OnInit {
           this.dialogRef.close();
           this._snackBar.open(data.message, 'OK');
         }else{
-          this._snackBar.open(data.message, 'Dismiss');
+          this._snackBar.open(data.message, 'dismiss');
         }
       }
     );
