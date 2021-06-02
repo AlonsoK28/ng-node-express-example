@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { User } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
 
@@ -17,6 +17,7 @@ interface ConfirmDeleteUserData {
 export class ConfirmDeleteUserComponent implements OnInit {
 
   confirmDeleteUserForm: FormGroup;
+  durationInSeconds = 6;
 
   constructor( private userService: UserService,
                private _snackBar: MatSnackBar,
@@ -36,8 +37,13 @@ export class ConfirmDeleteUserComponent implements OnInit {
       .deleteUser(this.data.userData.id)
       .subscribe(data => {
         if (data.ok) {
+
+          const snackBarConfig: MatSnackBarConfig = {
+            duration: this.durationInSeconds * 1000
+          }
+
           this.dialogRef.close({ deletedUser: true });
-          this._snackBar.open(data.message, 'OK');
+          this._snackBar.open(data.message, 'OK', snackBarConfig);
         } else {
           this._snackBar.open(data.message, 'dismiss');
         }
