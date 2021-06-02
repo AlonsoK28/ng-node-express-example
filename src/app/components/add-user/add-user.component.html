@@ -1,4 +1,9 @@
-<h2 mat-dialog-title>Add new User</h2>
+<h2 mat-dialog-title>
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon matSuffix>person_add</mat-icon>
+        &nbsp; Add new User
+    </div>
+</h2>
 <mat-dialog-content class="mat-typography">
     <h3>Add all the info neeed for this new user in the system</h3>
     <div class="a" [formGroup]="addUserForm">
@@ -35,7 +40,7 @@
                 </mat-select>
                 <mat-icon matSuffix>settings</mat-icon>
             </mat-form-field>
-    </div>
+        </div>
     </div>
     <div fxLayout="row" fxLayoutAlign="end center">
         <mat-slide-toggle ngModel name="userActive">Status user</mat-slide-toggle>
@@ -45,8 +50,10 @@
 <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Cancel</button>
     <button mat-button cdkFocusInitial
-    [disabled]="addUserForm.invalid"
-    (click)="addNewUser()"
-    color="primary"
-    mat-raised-button>Save</button>
+        [disabled]="addUserForm.invalid"
+        (click)="addNewUser()"
+        color="primary"
+        mat-raised-button>
+        Save
+    </button>
 </mat-dialog-actions>

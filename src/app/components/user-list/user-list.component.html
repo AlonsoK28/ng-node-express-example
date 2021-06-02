@@ -1,35 +1,45 @@
 <div fxLayout="row" fxLayoutAlign="center center">
     <mat-list>
         <div mat-subheader>Users in Database</div>
-        <mat-list-item *ngFor="let user of userListData; index as i;">
-            <mat-icon *ngIf="user.role === myUserType.USER" 
-                mat-list-icon
-                [matBadge]="user.id"
-                class="hand-icon">
-                account_circle
-            </mat-icon>
-            <mat-icon *ngIf="user.role === myUserType.ADMIN" 
-                mat-list-icon
-                [matBadge]="user.id"
-                matTooltip="This user is an Administrator"
-                [matTooltipPosition]="'left'"
-                class="hand-icon">
-                star_border
-            </mat-icon>
-            <div mat-line>{{user.name}}  
-                <span *ngIf="!user.active" 
-                    class="disabled-user">
-                    [ this user is currently deactivated ]
-                </span>
-            </div> 
-            <div mat-line> {{user.mail }} </div>
-            <p>
-                <mat-icon mat-list-icon class="hand-icon"
-                (click)="deleteUser(user, i)">delete</mat-icon>
-                <mat-icon mat-list-icon class="hand-icon">edit</mat-icon>
-            </p>
-        </mat-list-item>
-        <mat-divider></mat-divider>
+        <div class="a" *ngFor="let user of userListData; index as i; last as isLast;">
+            <mat-list-item class="mx-1">
+                <mat-icon *ngIf="user.role === myUserType.USER" 
+                    mat-list-icon
+                    [matBadge]="user.id"
+                    class="hand-icon">
+                    account_circle
+                </mat-icon>
+                <mat-icon *ngIf="user.role === myUserType.ADMIN" 
+                    mat-list-icon
+                    [matBadge]="user.id"
+                    matTooltip="This user is an Administrator"
+                    [matTooltipPosition]="'left'"
+                    class="hand-icon">
+                    star_border
+                </mat-icon>
+                <div mat-line>{{user.name}}  
+                    <span *ngIf="!user.active" 
+                        class="disabled-user">
+                        [ this user is currently deactivated ]
+                    </span>
+                </div> 
+                <div mat-line> {{user.mail }} </div>
+                <p>
+                    <button mat-stroked-button class="mr-1"
+                        (click)="deleteUser(user, i)">
+                        <mat-icon mat-list-icon class="hand-icon"
+                        color="accent">
+                            delete
+                        </mat-icon>
+                    </button>
+                    <button mat-stroked-button
+                        color="accent">
+                        <mat-icon mat-list-icon class="hand-icon">edit</mat-icon>
+                    </button>
+                </p>
+            </mat-list-item>
+            <mat-divider *ngIf="!isLast"></mat-divider>
+        </div>
     </mat-list>
 </div>
 

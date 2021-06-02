@@ -1,9 +1,19 @@
-<h2 mat-dialog-title>Confirm delete user</h2>
+<h2 mat-dialog-title>
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon matSuffix>delete_outline</mat-icon>
+        Confirm delete user
+    </div>
+</h2>
 <mat-dialog-content class="mat-typography">
 
-    <p>Please confirm that user with following info <strong>will be deleted permanently from Databse</strong>
+    <p>
+        Please confirm that user with following info 
+        <strong>will be deleted permanently from Database</strong>
     </p>
-    <div fxLayout="row" fxLayoutAlign="start center" class="pt-1">
+    <p>
+        Data of user:
+    </p>
+    <div fxLayout="row" fxLayoutAlign="start center" class="pt-1 ml-1">
         <div fxLayout="row" fxLayoutAlign="center center">
             <mat-icon aria-hidden="false">account_circle</mat-icon>
             &nbsp;
@@ -11,7 +21,7 @@
         </div>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="start center" class="pt-1">
+    <div fxLayout="row" fxLayoutAlign="start center" class="pt-1 ml-1">
         <div fxLayout="row" fxLayoutAlign="center center">
             <mat-icon aria-hidden="false">email</mat-icon>
             &nbsp;
@@ -19,7 +29,7 @@
         </div>
     </div>
 
-    <div class="a" [formGroup]="confirmDeleteUserForm">
+    <div class="ml-1" [formGroup]="confirmDeleteUserForm">
         <mat-form-field class="example-form-field pt-2 confirm-delete">
             <mat-label>Type DELETE USER to confirm</mat-label>
             <input matInput type="text"
@@ -37,5 +47,7 @@
         mat-raised-button
         color="warn"
         (click)="deleteUser()"
-        [disabled]="confirmDeleteUserForm.invalid">Delete</button>
+        [disabled]="confirmDeleteUserForm.invalid">
+        Delete
+    </button>
 </mat-dialog-actions>

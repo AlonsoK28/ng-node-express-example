@@ -61,6 +61,8 @@ export class UserListComponent implements OnInit {
   deleteUser(userData:User, index:number){
     const dialogConfig = new MatDialogConfig();
 
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
     dialogConfig.data = {
       userData
     }
