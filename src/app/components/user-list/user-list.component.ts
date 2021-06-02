@@ -6,6 +6,8 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 // components
 import { AddUserComponent } from '../add-user/add-user.component';
+import { UserService } from 'src/app/services/user.service';
+import { ConfirmDeleteUserComponent } from '../confirm-delete-user/confirm-delete-user.component';
 
 
 export interface Section {
@@ -24,7 +26,8 @@ export class UserListComponent implements OnInit {
   @Input() userListData: User[] = [];
   myUserType = UserType;
 
-  constructor( public dialog: MatDialog ) { }
+  constructor( public dialog: MatDialog,
+                private userService: UserService ) { }
 
   ngOnInit(): void {
   }
@@ -42,12 +45,19 @@ export class UserListComponent implements OnInit {
       AddUserComponent,
       dialogConfig
     );
+  }
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+  deleteUser(userData:User){
+    const dialogConfig = new MatDialogConfig();
 
+    dialogConfig.data = {
+      userData
+    }
 
+    const dialogRef = this.dialog.open(
+      ConfirmDeleteUserComponent,
+      dialogConfig
+    );
   }
 
 }

@@ -24,7 +24,8 @@
             </div> 
             <div mat-line> {{user.mail }} </div>
             <p>
-                <mat-icon mat-list-icon class="hand-icon">delete</mat-icon>
+                <mat-icon mat-list-icon class="hand-icon"
+                (click)="deleteUser(user)">delete</mat-icon>
                 <mat-icon mat-list-icon class="hand-icon">edit</mat-icon>
             </p>
         </mat-list-item>

@@ -6,6 +6,7 @@ import { UserListComponent } from '../user-list.component';
 
 // modules
 import { AdduserModule } from '../../add-user/module/adduser.module'
+import { ConfirmDeleteUserModule } from '../../confirm-delete-user/module/confirm-delete-user.module';
 
 // material
 import { MatListModule } from '@angular/material/list';
@@ -34,7 +35,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     AdduserModule,
     MatDialogModule,
     MatBadgeModule,
-    MatTooltipModule
+    MatTooltipModule,
+    ConfirmDeleteUserModule
   ],
   exports:[
     UserListComponent

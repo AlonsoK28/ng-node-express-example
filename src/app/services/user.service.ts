@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 // interfaces
-import { addNewUserApi, UserApi } from '../interfaces/user-api';
+import { UserApiResponseList, UserApiResponseGeneric } from '../interfaces/user-api';
 
 // environment
 import { environment } from '../../environments/environment';
@@ -17,7 +17,7 @@ export class UserService {
 
   getUserList() {
     const url = `${environment.apiEndpoint}/get-users`;
-    return this.http.get<UserApi>(url);
+    return this.http.get<UserApiResponseList>(url);
   }
 
   addNewUser(newUser: User){
@@ -29,8 +29,12 @@ export class UserService {
       mail: newUser.mail,
       role: newUser.role
     };
-    return this.http.put<addNewUserApi>(url, body);
+    return this.http.put<UserApiResponseGeneric>(url, body);
   }
 
+  deleteUser(id:number){
+    const url = `${environment.apiEndpoint}/delete-user/${id}`;
+    return this.http.delete<UserApiResponseGeneric>(url);
+  }
 
 }
