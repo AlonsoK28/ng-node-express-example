@@ -20,14 +20,14 @@ export class UserService {
     return this.http.get<UserApiResponseList>(url);
   }
 
-  addNewUser(newUser: User){
+  addUser(user: User){
     const url = `${environment.apiEndpoint}/add-user`;
     const body = {
-      id: newUser.id,
-      name: newUser.name,
-      active: newUser.active,
-      mail: newUser.mail,
-      role: newUser.role
+      id: user.id,
+      name: user.name,
+      active: user.active,
+      mail: user.mail,
+      role: user.role
     };
     return this.http.put<UserApiResponseGeneric>(url, body);
   }

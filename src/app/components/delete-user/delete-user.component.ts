@@ -10,9 +10,9 @@ interface ConfirmDeleteUserData {
 }
 
 @Component({
-  selector: 'app-confirm-delete-user',
-  templateUrl: './confirm-delete-user.component.html',
-  styleUrls: ['./confirm-delete-user.component.scss']
+  selector: 'app-delete-user',
+  templateUrl: './delete-user.component.html',
+  styleUrls: ['./delete-user.component.scss']
 })
 export class ConfirmDeleteUserComponent implements OnInit {
 

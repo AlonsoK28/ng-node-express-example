@@ -36,7 +36,7 @@ export class AddUserComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addNewUser(){
+  addUser(){
     const userData:User = {
       id: this.addUserForm.controls.IdUser.value,
       name: this.addUserForm.controls.nameUser.value,
@@ -47,7 +47,7 @@ export class AddUserComponent implements OnInit {
     };
 
     this.userService
-    .addNewUser(userData)
+    .addUser(userData)
     .subscribe(
       data =>{
         if(data.ok){

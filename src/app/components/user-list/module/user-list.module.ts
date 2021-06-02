@@ -6,7 +6,7 @@ import { UserListComponent } from '../user-list.component';
 
 // modules
 import { AdduserModule } from '../../add-user/module/adduser.module'
-import { ConfirmDeleteUserModule } from '../../confirm-delete-user/module/confirm-delete-user.module';
+import { ConfirmDeleteUserModule } from '../../delete-user/module/delete-user.module';
 
 // material
 import { MatListModule } from '@angular/material/list';

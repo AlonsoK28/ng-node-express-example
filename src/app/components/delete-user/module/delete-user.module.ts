@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // components
-import { ConfirmDeleteUserComponent } from '../confirm-delete-user.component';
+import { ConfirmDeleteUserComponent } from '../delete-user.component';
 
 // material
 import { MatDialogModule } from '@angular/material/dialog';
