@@ -39,7 +39,7 @@ export class AddUserComponent implements OnInit {
     const userData:User = {
       id: this.addUserForm.controls.IdUser.value,
       name: this.addUserForm.controls.nameUser.value,
-      active: true,
+      active: this.addUserForm.controls.statusUser.value,
       mail: this.addUserForm.controls.mailUser.value,
       role: this.addUserForm.controls.roleUser.value
 

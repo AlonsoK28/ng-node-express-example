@@ -12,7 +12,8 @@
                 <mat-label>Id</mat-label>
                 <input matInput
                 formControlName="IdUser"
-                type="number">
+                type="number"
+                autocomplete="off">
                 <mat-icon matSuffix>business</mat-icon>
             </mat-form-field>
     
@@ -41,10 +42,9 @@
                 <mat-icon matSuffix>settings</mat-icon>
             </mat-form-field>
         </div>
-    </div>
-    <div fxLayout="row" fxLayoutAlign="end center">
-        <mat-slide-toggle ngModel name="userActive">Status user</mat-slide-toggle>
-
+        <div fxLayout="row" fxLayoutAlign="end center">
+            <mat-slide-toggle formControlName="statusUser">Status user</mat-slide-toggle>
+        </div>
     </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">

@@ -25,7 +25,7 @@ export class UserService {
     const body = {
       id: newUser.id,
       name: newUser.name,
-      active: true,
+      active: newUser.active,
       mail: newUser.mail,
       role: newUser.role
     };
