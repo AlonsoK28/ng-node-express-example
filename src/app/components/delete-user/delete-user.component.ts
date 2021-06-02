@@ -5,7 +5,7 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { User } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
 
-interface ConfirmDeleteUserData {
+interface DeleteUserData {
   userData: User
 }
 
@@ -14,15 +14,16 @@ interface ConfirmDeleteUserData {
   templateUrl: './delete-user.component.html',
   styleUrls: ['./delete-user.component.scss']
 })
-export class ConfirmDeleteUserComponent implements OnInit {
+export class DeleteUserComponent implements OnInit {
 
   confirmDeleteUserForm: FormGroup;
   durationInSeconds = 6;
 
   constructor( private userService: UserService,
                private _snackBar: MatSnackBar,
-               @Inject(MAT_DIALOG_DATA) public data: ConfirmDeleteUserData,
-               private dialogRef: MatDialogRef<ConfirmDeleteUserComponent> ) {
+               @Inject(MAT_DIALOG_DATA) public data: DeleteUserData,
+               private dialogRef: MatDialogRef<DeleteUserComponent> ) {
+
     this.confirmDeleteUserForm = new FormGroup({
       confirm: new FormControl('', [Validators.required, this.confirmDelete])
     });

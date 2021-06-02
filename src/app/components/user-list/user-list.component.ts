@@ -7,7 +7,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 // components
 import { AddUserComponent } from '../add-user/add-user.component';
 import { UserService } from 'src/app/services/user.service';
-import { ConfirmDeleteUserComponent } from '../delete-user/delete-user.component';
+import { DeleteUserComponent } from '../delete-user/delete-user.component';
 
 
 export interface Section {

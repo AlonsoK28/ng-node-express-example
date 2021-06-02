@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // components
-import { ConfirmDeleteUserComponent } from '../delete-user.component';
+import { DeleteUserComponent } from '../delete-user.component';
 
 // material
 import { MatDialogModule } from '@angular/material/dialog';
@@ -17,7 +17,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    ConfirmDeleteUserComponent
+    DeleteUserComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +31,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     FormsModule
   ],
   exports: [
-    ConfirmDeleteUserComponent
+    DeleteUserComponent
   ]
 })
-export class ConfirmDeleteUserModule { }
+export class DeleteUserModule { }
