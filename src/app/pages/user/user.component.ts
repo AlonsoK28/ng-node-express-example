@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User} from 'src/app/interfaces/user';
-import { UserService } from 'src/app/services/user.service';
+import { User} from '@interfaces/user';
+import { UserService } from '@services/user.service';
 
 @Component({
   selector: 'app-user',
@@ -25,7 +25,7 @@ export class UserComponent implements OnInit {
   getData() {
     this.userService
       .getUserList()
-      .subscribe(res => {
+      .subscribe( res => {
         if(res.ok){
           this.loaded = true;
           this.userListData = res.data;

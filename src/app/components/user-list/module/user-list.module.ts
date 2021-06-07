@@ -5,9 +5,9 @@ import { CommonModule } from '@angular/common';
 import { UserListComponent } from '../user-list.component';
 
 // modules
-import { AdduserModule } from '../../add-user/module/adduser.module'
-import { DeleteUserModule } from '../../delete-user/module/delete-user.module';
-import { EditUserModule } from '../../edit-user/module/edit-user.module';
+import { AdduserModule } from '@components/add-user/module/adduser.module'
+import { DeleteUserModule } from '@components/delete-user/module/delete-user.module';
+import { EditUserModule } from '@components/edit-user/module/edit-user.module';
 
 // material
 import { MatListModule } from '@angular/material/list';

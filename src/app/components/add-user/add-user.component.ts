@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 // angular forms
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { User } from 'src/app/interfaces/user';
-import { UserService } from 'src/app/services/user.service';
+import { User } from '@interfaces/user';
+import { UserService } from '@services/user.service';
 
 // material
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';

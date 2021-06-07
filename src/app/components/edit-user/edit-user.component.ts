@@ -2,8 +2,10 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
-import { User } from 'src/app/interfaces/user';
-import { UserService } from 'src/app/services/user.service';
+// interfaces
+import { User } from '@interfaces/user';
+// services
+import { UserService } from '@services/user.service';
 
 interface EditUserData {
   userData: User

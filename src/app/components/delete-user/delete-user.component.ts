@@ -2,8 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
-import { User } from 'src/app/interfaces/user';
-import { UserService } from 'src/app/services/user.service';
+import { User } from '@interfaces/user';
+import { UserService } from '@services/user.service';
 
 interface DeleteUserData {
   userData: User

@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 // interfaces
-import { UserApiResponseList, UserApiResponseGeneric } from '../interfaces/user-api';
+import { UserApiResponseList, UserApiResponseGeneric } from '@interfaces/user-api';
 
 // environment
-import { environment } from '../../environments/environment';
-import { User } from '../interfaces/user';
+import { environment } from '@environment';
+import { User } from '@interfaces/user';
 
 @Injectable({
   providedIn: 'root'

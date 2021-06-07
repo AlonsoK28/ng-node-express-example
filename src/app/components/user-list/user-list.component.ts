@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { User, UserType } from 'src/app/interfaces/user';
+import { User, UserType } from '@interfaces/user';
 
 // material
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
