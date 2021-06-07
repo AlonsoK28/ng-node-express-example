@@ -1,3 +1,4 @@
 <div class="mat-app-background basic-container">
+    <app-no-users *ngIf="noUsers"></app-no-users>
     <app-user-list *ngIf="loaded" [userListData]="userListData" ></app-user-list>
 </div>

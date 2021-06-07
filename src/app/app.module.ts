@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 // modules
 import { ToolbarModule } from './components/toolbar/module/toolbar.module';
 import { UserListModule } from './components/user-list/module/user-list.module';
+import { NoUsersModule } from './components/no-users/module/no-users.module';
 
 // pages
 import { UserComponent } from './pages/user/user.component';
@@ -25,7 +26,8 @@ import { UserComponent } from './pages/user/user.component';
     BrowserAnimationsModule,
     ToolbarModule,
     UserListModule,
-    HttpClientModule
+    HttpClientModule,
+    NoUsersModule
   ],
   providers: [],
   bootstrap: [AppComponent]

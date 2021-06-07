@@ -11,9 +11,11 @@ export class UserComponent implements OnInit {
 
   loaded: boolean;
   userListData: User[] = [];
+  noUsers:boolean;
 
   constructor( private userService: UserService ) {
     this.loaded = false;
+    this.noUsers = false;
   }
 
   ngOnInit(): void {
@@ -24,8 +26,12 @@ export class UserComponent implements OnInit {
     this.userService
       .getUserList()
       .subscribe(res => {
-        this.loaded = true;
-        this.userListData = res.data;
+        if(res.ok){
+          this.loaded = true;
+          this.userListData = res.data;
+        }else{
+          this.noUsers = true;
+        }
       })
   }
 }
