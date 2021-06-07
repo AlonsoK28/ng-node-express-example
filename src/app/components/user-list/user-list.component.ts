@@ -6,7 +6,6 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 // components
 import { AddUserComponent } from '../add-user/add-user.component';
-import { UserService } from 'src/app/services/user.service';
 import { DeleteUserComponent } from '../delete-user/delete-user.component';
 import { EditUserComponent } from '../edit-user/edit-user.component';
 
@@ -28,8 +27,7 @@ export class UserListComponent implements OnInit {
   myUserType = UserType;
 
   constructor( public dialog: MatDialog,
-               private cdref: ChangeDetectorRef,
-                private userService: UserService ) { }
+               private cdref: ChangeDetectorRef ) { }
 
   ngOnInit(): void {
   }
