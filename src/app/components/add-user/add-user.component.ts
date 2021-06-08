@@ -28,7 +28,7 @@ export class AddUserComponent implements OnInit {
       IdUser: new FormControl('', [
         Validators.required,
         Validators.min(1),
-        Validators.max(100)
+        Validators.max(99)
       ]),
       nameUser: new FormControl('', [Validators.required]),
       mailUser: new FormControl('', [Validators.required]),
