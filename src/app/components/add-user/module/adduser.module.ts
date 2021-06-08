@@ -14,9 +14,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+// modules
+import { SlideStatusUserModule } from '@components/slide-status-user/module/slide-status-user.module';
 
 @NgModule({
   declarations: [
@@ -30,11 +32,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-    MatSlideToggleModule,
     FlexLayoutModule,
     ReactiveFormsModule,
     FormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    SlideStatusUserModule
   ],
   exports: [
     AddUserComponent

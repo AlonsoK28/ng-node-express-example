@@ -19,6 +19,7 @@ export class AddUserComponent implements OnInit {
 
   addUserForm: FormGroup;
   durationInSeconds = 6;
+  statusUser:boolean;
 
   constructor( private userService: UserService,
                private _snackBar: MatSnackBar,
@@ -28,8 +29,8 @@ export class AddUserComponent implements OnInit {
       nameUser: new FormControl('', [Validators.required]),
       mailUser: new FormControl('', [Validators.required]),
       roleUser: new FormControl('', [Validators.required]),
-      statusUser: new FormControl(true),
     });
+    this.statusUser = true;
    }
   
 
@@ -40,7 +41,7 @@ export class AddUserComponent implements OnInit {
     const userData:User = {
       id: this.addUserForm.controls.IdUser.value,
       name: this.addUserForm.controls.nameUser.value,
-      active: this.addUserForm.controls.statusUser.value,
+      active: this.statusUser,
       mail: this.addUserForm.controls.mailUser.value,
       role: this.addUserForm.controls.roleUser.value
 
