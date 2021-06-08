@@ -18,6 +18,9 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
+// components
+import { SlideStatusUserModule } from '@components/slide-status-user/module/slide-status-user.module';
+
 @NgModule({
   declarations: [
     EditUserComponent
@@ -35,7 +38,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatSlideToggleModule,
     FlexLayoutModule,
     MatSnackBarModule,
-    
+    SlideStatusUserModule
   ],
   exports: [
     EditUserComponent

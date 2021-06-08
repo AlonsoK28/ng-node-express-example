@@ -1,5 +1,4 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -7,19 +6,23 @@ import { FormControl, FormGroup } from '@angular/forms';
   templateUrl: './slide-status-user.component.html',
   styleUrls: ['./slide-status-user.component.scss']
 })
-export class SlideStatusUserComponent implements OnInit {
+export class SlideStatusUserComponent implements OnInit, OnChanges {
 
-  @Input() statusUser:boolean;
+  @Input() statusUser:boolean = true;
   @Output() currentStatusUser: EventEmitter<boolean> = new EventEmitter<boolean>();
   statusUserForm: FormGroup;
 
   constructor() { 
-    this.statusUser = true;
     this.statusUserForm = new FormGroup({
-      statusUser: new FormControl(
-        this.statusUser
-      ),
+      statusUser: new FormControl()
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.statusUser){
+      this.statusUser = changes.statusUser.currentValue;
+      this.statusUserForm.controls.statusUser.setValue(this.statusUser);
+    }
   }
 
   ngOnInit(): void {

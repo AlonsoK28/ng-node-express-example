@@ -20,22 +20,25 @@ export class EditUserComponent implements OnInit {
 
   editUserForm: FormGroup;
   durationInSeconds = 6;
+  statusUser: boolean;
 
   constructor( private userService: UserService,
                private _snackBar: MatSnackBar,
                private dialogRef: MatDialogRef<EditUserComponent>,
                @Inject(MAT_DIALOG_DATA) public data: EditUserData ) {
 
-    this.editUserForm = new FormGroup({
-      IdUser: new FormControl(
-        { value: this.data.userData.id, disabled: true }, 
-        [Validators.required]
-      ),
-      nameUser: new FormControl(this.data.userData.name, [Validators.required]),
-      mailUser: new FormControl(this.data.userData.mail, [Validators.required]),
-      roleUser: new FormControl(this.data.userData.role, [Validators.required]),
-      statusUser: new FormControl(this.data.userData.active),
-    });
+                this.statusUser = this.data.userData.active;
+
+                this.editUserForm = new FormGroup({
+                  IdUser: new FormControl(
+                    { value: this.data.userData.id, disabled: true }, 
+                    [Validators.required]
+                  ),
+                  nameUser: new FormControl(this.data.userData.name, [Validators.required]),
+                  mailUser: new FormControl(this.data.userData.mail, [Validators.required]),
+                  roleUser: new FormControl(this.data.userData.role, [Validators.required])
+                });
+                
                }
 
   ngOnInit(): void {
@@ -45,7 +48,7 @@ export class EditUserComponent implements OnInit {
     const userData: User = {
       id: this.editUserForm.controls.IdUser.value,
       name: this.editUserForm.controls.nameUser.value,
-      active: this.editUserForm.controls.statusUser.value,
+      active: this.statusUser,
       mail: this.editUserForm.controls.mailUser.value,
       role: this.editUserForm.controls.roleUser.value
     };
@@ -69,6 +72,16 @@ export class EditUserComponent implements OnInit {
           }
         }
       );
+  }
+
+  setControlListeners() {
+    this.editUserForm
+    .controls
+    .statusUser
+    .valueChanges
+    .subscribe(data => {
+      this.statusUser = data;
+    })
   }
 
 }
