@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { User, UserType } from '@interfaces/user';
 
 // material
@@ -8,6 +8,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddUserComponent } from '../add-user/add-user.component';
 import { DeleteUserComponent } from '../delete-user/delete-user.component';
 import { EditUserComponent } from '../edit-user/edit-user.component';
+import { MatRipple } from '@angular/material/core';
 
 
 export interface Section {
@@ -22,12 +23,14 @@ export interface Section {
 })
 export class UserListComponent implements OnInit {
 
-
   @Input() userListData: User[] = [];
   myUserType = UserType;
+  @ViewChildren(MatRipple) ripple: QueryList<MatRipple>;
+  @ViewChildren('myListItem', { read: ElementRef }) items: QueryList<ElementRef>
 
   constructor( public dialog: MatDialog,
-               private cdref: ChangeDetectorRef ) { }
+               private cdref: ChangeDetectorRef ) { 
+               }
 
   ngOnInit(): void {
   }
@@ -53,6 +56,8 @@ export class UserListComponent implements OnInit {
       if(result){
         this.userListData.push((result.newUser));
         this.cdref.detectChanges();
+        this.scrollLastItem();
+        this.triggerRipple();
       }
     });
   }
@@ -105,8 +110,23 @@ export class UserListComponent implements OnInit {
       if (result.userEditInfo) {
         this.userListData[index] = result.userEditInfo;
         this.cdref.detectChanges();
+        this.triggerRipple(index);
       }
     });
+  }
+
+  triggerRipple(index?:number) {
+    const rippleConfig = { centered: true };
+    if(index){
+      this.ripple.get(index).launch(rippleConfig);
+    }else{
+      this.ripple.last.launch(rippleConfig);
+    }
+  }
+
+  scrollLastItem() {
+    // docs https://angular.io/api/core/QueryList
+    this.items.last.nativeElement.scrollIntoView({ behavior: "smooth"});
   }
 
 }

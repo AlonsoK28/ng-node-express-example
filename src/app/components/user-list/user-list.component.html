@@ -1,14 +1,16 @@
 <div fxLayout="row" fxLayoutAlign="center center">
-    <mat-list>
+    <mat-list class="mb-2">
         <div mat-subheader>Users in Database</div>
-        <div class="a" *ngFor="let user of userListData; index as i; last as isLast;"
-            [matTooltip]="user.role === myUserType.ADMIN ? 'This user is an Administrator' : ''"
-            [matTooltipPosition]="'left'">
-            <mat-list-item class="mx-1">
+        <div class="a" *ngFor="let user of userListData; index as i; last as isLast;">
+            <mat-list-item class="mx-1"
+                matRipple
+                #myListItem>
                 <mat-icon 
                     mat-list-icon
                     [matBadge]="user.id"
-                    class="hand-icon">
+                    class="hand-icon"
+                    [matTooltip]="user.role === myUserType.ADMIN ? 'This user is an Administrator' : ''"
+                    [matTooltipPosition]="'left'">
                     <span *ngIf="user.role === myUserType.USER">
                         account_circle
                     </span>

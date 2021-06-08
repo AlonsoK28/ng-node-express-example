@@ -17,9 +17,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatRippleModule, MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions } from '@angular/material/core';
 
 // 3-party
 import { FlexLayoutModule } from '@angular/flex-layout';
+
+const globalRippleConfig: RippleGlobalOptions = {
+  disabled: true,
+};
 
 
 @NgModule({
@@ -38,10 +43,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatBadgeModule,
     MatTooltipModule,
     DeleteUserModule,
-    EditUserModule
+    EditUserModule,
+    MatRippleModule
   ],
   exports:[
     UserListComponent
+  ],
+  providers: [
+    { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig }
   ]
 })
 export class UserListModule { }
