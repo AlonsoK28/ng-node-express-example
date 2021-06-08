@@ -25,7 +25,11 @@ export class AddUserComponent implements OnInit {
                private _snackBar: MatSnackBar,
                private dialogRef: MatDialogRef<AddUserComponent> ) {
     this.addUserForm = new FormGroup({
-      IdUser: new FormControl('', [Validators.required]),
+      IdUser: new FormControl('', [
+        Validators.required,
+        Validators.min(1),
+        Validators.max(100)
+      ]),
       nameUser: new FormControl('', [Validators.required]),
       mailUser: new FormControl('', [Validators.required]),
       roleUser: new FormControl('', [Validators.required]),
