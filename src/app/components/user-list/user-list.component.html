@@ -11,11 +11,14 @@
                     class="hand-icon"
                     [matTooltip]="user.role === myUserType.ADMIN ? 'This user is an Administrator' : ''"
                     [matTooltipPosition]="'left'">
-                    <span *ngIf="user.role === myUserType.USER">
+                    <span *ngIf="user.role === myUserType.USER && user.active">
                         account_circle
                     </span>
-                    <span *ngIf="user.role === myUserType.ADMIN">
+                    <span *ngIf="user.role === myUserType.ADMIN && user.active">
                         star_border
+                    </span>
+                    <span *ngIf="!user.active">
+                        person_off
                     </span>
                 </mat-icon>
                 <div mat-line>
