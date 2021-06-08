@@ -43,7 +43,7 @@
             </mat-form-field>
         </div>
         <div fxLayout="row" fxLayoutAlign="end center">
-            <app-slide-status-user (currentStatusUser)="statusUser=$event"></app-slide-status-user>
+            <app-slide-status-user [statusUser]="statusUser" (currentStatusUser)="statusUser=$event"></app-slide-status-user>
         </div>
     </div>
 </mat-dialog-content>
