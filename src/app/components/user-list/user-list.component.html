@@ -7,7 +7,6 @@
                 #myListItem>
                 <mat-icon 
                     mat-list-icon
-                    [matBadge]="user.id"
                     class="hand-icon"
                     [matTooltip]=" user.role === myUserType.ADMIN && 
                                    user.active && 
@@ -46,7 +45,8 @@
                     <button mat-stroked-button class="mr-1"
                         (click)="deleteUser(user, i)"
                         [disabled]="user.id === rootUser"
-                        color="accent">
+                        color="warn"
+                        mat-raised-button>
                         <mat-icon mat-list-icon class="hand-icon">
                             delete
                         </mat-icon>
@@ -54,7 +54,8 @@
                     <button mat-stroked-button
                         color="accent"
                         (click)="editUser(user, i)"
-                        [disabled]="user.id === rootUser">
+                        [disabled]="user.id === rootUser"
+                        mat-raised-button>
                         <mat-icon mat-list-icon class="hand-icon">
                             edit
                         </mat-icon>
@@ -68,7 +69,8 @@
 
 <div div fxLayout="row" fxLayoutAlign="end center" class="mat-app-background basic-container">
     <button mat-mini-fab class="back-to-top"
-        (click)="addUser()">
+        (click)="addUser()"
+        color="primary">
         <mat-icon aria-hidden="false">person_add_alt</mat-icon>
     </button>
 </div>
