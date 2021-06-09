@@ -16,6 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 // modules
 import { SlideStatusUserModule } from '@components/slide-status-user/module/slide-status-user.module';
@@ -36,7 +37,8 @@ import { SlideStatusUserModule } from '@components/slide-status-user/module/slid
     ReactiveFormsModule,
     FormsModule,
     MatSnackBarModule,
-    SlideStatusUserModule
+    SlideStatusUserModule,
+    MatTooltipModule
   ],
   exports: [
     AddUserComponent

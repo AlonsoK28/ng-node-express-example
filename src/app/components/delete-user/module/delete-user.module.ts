@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 // angular forms
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -28,7 +29,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     MatSnackBarModule,
     MatInputModule,
     ReactiveFormsModule, 
-    FormsModule
+    FormsModule,
+    MatTooltipModule
   ],
   exports: [
     DeleteUserComponent

@@ -17,6 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 // components
 import { SlideStatusUserModule } from '@components/slide-status-user/module/slide-status-user.module';
@@ -38,7 +39,8 @@ import { SlideStatusUserModule } from '@components/slide-status-user/module/slid
     MatSlideToggleModule,
     FlexLayoutModule,
     MatSnackBarModule,
-    SlideStatusUserModule
+    SlideStatusUserModule,
+    MatTooltipModule
   ],
   exports: [
     EditUserComponent
