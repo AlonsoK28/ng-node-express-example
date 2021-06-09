@@ -9,16 +9,23 @@
                     mat-list-icon
                     [matBadge]="user.id"
                     class="hand-icon"
-                    [matTooltip]="user.role === myUserType.ADMIN && user.active ? 'This user is an Administrator' : ''"
+                    [matTooltip]=" user.role === myUserType.ADMIN && 
+                                   user.active && 
+                                   user.id != rootUser ? 'This user is an Administrator' : ''"
                     [matTooltipPosition]="'left'">
-                    <span *ngIf="user.role === myUserType.USER && user.active">
+                    <span *ngIf=" user.role === myUserType.USER && 
+                                  user.active && user.id != rootUser">
                         account_circle
                     </span>
-                    <span *ngIf="user.role === myUserType.ADMIN && user.active">
+                    <span *ngIf=" user.role === myUserType.ADMIN && 
+                                  user.active && user.id != rootUser">
                         star_border
                     </span>
                     <span *ngIf="!user.active">
                         person_off
+                    </span>
+                    <span *ngIf="user.id === rootUser">
+                        flag
                     </span>
                 </mat-icon>
                 <div mat-line>
@@ -33,19 +40,24 @@
                         </div>
                     </div>
                 </div> 
-                <div mat-line> {{user.mail }} </div>
-                <p>
+                <div mat-line class="email-text"> {{user.mail }} </div>
+                <p  [matTooltip]="user.id === rootUser ? 'Root user can´t be edited or deleted' : ''"
+                    [matTooltipPosition]="'above'">
                     <button mat-stroked-button class="mr-1"
-                        (click)="deleteUser(user, i)">
-                        <mat-icon mat-list-icon class="hand-icon"
+                        (click)="deleteUser(user, i)"
+                        [disabled]="user.id === rootUser"
                         color="accent">
+                        <mat-icon mat-list-icon class="hand-icon">
                             delete
                         </mat-icon>
                     </button>
                     <button mat-stroked-button
                         color="accent"
-                        (click)="editUser(user, i)">
-                        <mat-icon mat-list-icon class="hand-icon">edit</mat-icon>
+                        (click)="editUser(user, i)"
+                        [disabled]="user.id === rootUser">
+                        <mat-icon mat-list-icon class="hand-icon">
+                            edit
+                        </mat-icon>
                     </button>
                 </p>
             </mat-list-item>

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { AfterContentInit, ChangeDetectorRef, Component, ElementRef, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { User, UserType } from '@interfaces/user';
 
 // material
@@ -26,13 +26,15 @@ export class UserListComponent implements OnInit {
   @Input() userListData: User[] = [];
   myUserType = UserType;
   @ViewChildren(MatRipple) ripple: QueryList<MatRipple>;
-  @ViewChildren('myListItem', { read: ElementRef }) items: QueryList<ElementRef>
+  @ViewChildren('myListItem', { read: ElementRef }) items: QueryList<ElementRef>;
+  rootUser: number;
 
   constructor( public dialog: MatDialog,
                private cdref: ChangeDetectorRef ) { 
                }
 
   ngOnInit(): void {
+    this.checkRootUser();
   }
 
   addUser() {
@@ -127,6 +129,16 @@ export class UserListComponent implements OnInit {
   scrollLastItem() {
     // docs https://angular.io/api/core/QueryList
     this.items.last.nativeElement.scrollIntoView({ behavior: "smooth"});
+  }
+
+  checkRootUser() {
+    this.userListData
+    .forEach( ele => {
+      if( ele.role === this.myUserType.ADMIN && 
+          ele.name === 'system_admin' ){
+        this.rootUser = ele.id;
+      }
+    });
   }
 
 }
