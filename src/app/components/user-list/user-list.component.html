@@ -9,7 +9,7 @@
                     mat-list-icon
                     [matBadge]="user.id"
                     class="hand-icon"
-                    [matTooltip]="user.role === myUserType.ADMIN ? 'This user is an Administrator' : ''"
+                    [matTooltip]="user.role === myUserType.ADMIN && user.active ? 'This user is an Administrator' : ''"
                     [matTooltipPosition]="'left'">
                     <span *ngIf="user.role === myUserType.USER && user.active">
                         account_circle
