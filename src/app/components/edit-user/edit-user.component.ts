@@ -66,9 +66,9 @@ export class EditUserComponent implements OnInit {
             }
 
             this.dialogRef.close({ userEditInfo: userData });
-            this._snackBar.open(`${data.message} ✔️`, 'OK', snackBarConfig);
+            this._snackBar.open(`${data.message} ✔️`, 'ok', snackBarConfig);
           } else {
-            this._snackBar.open(data.message, 'dismiss');
+            this._snackBar.open(`${data.message} ❌`, 'dismiss');
           }
         }
       );
