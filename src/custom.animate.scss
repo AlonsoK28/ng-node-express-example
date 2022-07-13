@@ -1,0 +1,7 @@
+// animate.css custom build
+// docs https://animate.style/#custom-builds
+// example https://github.com/animate-css/animate.css/issues/1073
+@import "node_modules/animate.css/source/_vars";
+@import "node_modules/animate.css/source/_base";
+
+@import "node_modules/animate.css/source/fading_entrances/fadeIn";
