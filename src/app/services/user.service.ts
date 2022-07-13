@@ -8,6 +8,9 @@ import { UserApiResponseList, UserApiResponseGeneric } from '@interfaces/user-ap
 import { environment } from '@environment';
 import { User } from '@interfaces/user';
 
+// rxjs
+import { delay } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +20,7 @@ export class UserService {
 
   getUserList() {
     const url = `${environment.apiEndpoint}/get-users`;
-    return this.http.get<UserApiResponseList>(url);
+    return this.http.get<UserApiResponseList>(url).pipe(delay(1300));
   }
 
   addUser(user: User){
