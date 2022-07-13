@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 // interfaces
 import { UserApiResponseList, UserApiResponseGeneric } from '@interfaces/user-api';
@@ -9,7 +9,8 @@ import { environment } from '@environment';
 import { User } from '@interfaces/user';
 
 // rxjs
-import { delay } from 'rxjs/operators';
+import { catchError, delay } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,9 @@ export class UserService {
 
   getUserList() {
     const url = `${environment.apiEndpoint}/get-users`;
-    return this.http.get<UserApiResponseList>(url).pipe(delay(1300));
+    return this.http.get<UserApiResponseList>(url).pipe(
+      delay(1300),
+      catchError(this.myHandleError));
   }
 
   addUser(user: User){
@@ -50,6 +53,18 @@ export class UserService {
       role: user.role
     };
     return this.http.post<UserApiResponseGeneric>(url, body);
+  }
+
+  myHandleError(err: HttpErrorResponse){
+
+    const noDatabaseConnection = 'No database connection';
+
+    if(err.status === 0 || err.status === 500){
+      return throwError(noDatabaseConnection);
+    }else{
+      return throwError('Unknow error');
+    }
+
   }
 
 }
