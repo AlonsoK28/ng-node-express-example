@@ -15,6 +15,10 @@ import { NoUsersModule } from '@components/no-users/module/no-users.module';
 // pages
 import { UserComponent } from '@pages/user/user.component';
 
+// material
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +31,8 @@ import { UserComponent } from '@pages/user/user.component';
     ToolbarModule,
     UserListModule,
     HttpClientModule,
-    NoUsersModule
+    NoUsersModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
