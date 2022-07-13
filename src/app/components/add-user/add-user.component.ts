@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 
 // angular forms
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -7,8 +7,11 @@ import { UserService } from '@services/user.service';
 
 // material
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
+interface DialogData {
+  currentUserList: User[]
+}
 
 @Component({
   selector: 'app-add-user',
@@ -20,15 +23,15 @@ export class AddUserComponent implements OnInit {
   addUserForm: FormGroup;
   durationInSeconds = 6;
   statusUser:boolean;
+  nextUserId: number;
 
   constructor( private userService: UserService,
                private _snackBar: MatSnackBar,
-               private dialogRef: MatDialogRef<AddUserComponent> ) {
+               private dialogRef: MatDialogRef<AddUserComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: DialogData ) {
     this.addUserForm = new FormGroup({
-      IdUser: new FormControl('', [
+      IdUser: new FormControl({ value: '', disabled: true }, [
         Validators.required,
-        Validators.min(1),
-        Validators.max(99)
       ]),
       nameUser: new FormControl('', [Validators.required]),
       mailUser: new FormControl('', [Validators.required]),
@@ -39,6 +42,18 @@ export class AddUserComponent implements OnInit {
   
 
   ngOnInit(): void {
+    this.getMaxId();
+    this.setMaxUserId();
+  }
+
+  setMaxUserId() {
+    this.addUserForm.controls['IdUser'].setValue(this.nextUserId);
+  }
+
+  getMaxId() {
+    const ids = this.data.currentUserList.map(data => data.id);    
+    const max = Math.max(...ids);
+    this.nextUserId = max + 1;
   }
 
   addUser(){

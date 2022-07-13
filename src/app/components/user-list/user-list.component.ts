@@ -46,6 +46,10 @@ export class UserListComponent implements OnInit {
     dialogConfig.minHeight = 'calc(50vh - 90px)';
     dialogConfig.height = 'auto';
 
+    dialogConfig.data = {
+      currentUserList: this.userListData
+    }; 
+
     const dialogRef = this.dialog.open(
       AddUserComponent,
       dialogConfig
