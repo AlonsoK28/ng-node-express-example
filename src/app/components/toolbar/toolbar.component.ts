@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import packageJson from '../../../../package.json';
 
 @Component({
   selector: 'app-toolbar',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
+  public version: string = packageJson.version;
 
   constructor() { }
 

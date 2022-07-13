@@ -45,7 +45,9 @@
       "@interceptors/*": [
         "app/interceptors/*"
       ],
-    }
+    },
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
