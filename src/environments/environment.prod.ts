@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiEndpoint: 'http://localhost:3000'
+  apiEndpoint: 'https://node-express-example-production.up.railway.app/'
 };
