@@ -68,9 +68,9 @@ export class AddUserComponent implements OnInit {
 
     this.userService
     .addUser(userData)
-    .subscribe(
-      data =>{
-        if(data.ok){
+    .subscribe({
+      next: data => {
+        if (data.ok) {
           // close dialog from another component 
           // https://stackoverflow.com/questions/57822013/close-material-dialog-from-different-component-angular
 
@@ -78,13 +78,17 @@ export class AddUserComponent implements OnInit {
             duration: this.durationInSeconds * 1000
           }
 
-          this.dialogRef.close({ newUser: userData});
+          this.dialogRef.close({ newUser: userData });
           this._snackBar.open(`${data.message} ✔️`, 'ok', snackBarConfig);
-        }else{
+        } else {
           this._snackBar.open(`${data.message} ❌`, 'dismiss');
         }
-      }
-    );
+      },
+      error: (err) => {
+        this._snackBar.open(err, 'close');
+      },
+      complete: () => {}
+    });
   }
 
 }

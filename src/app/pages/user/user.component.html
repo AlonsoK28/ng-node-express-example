@@ -1,7 +1,6 @@
 <div class="mat-app-background basic-container">
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
     <app-no-users *ngIf="noUsers"></app-no-users>
-    <app-user-list *ngIf="loaded; else elseLoadingBlock" [userListData]="userListData" class="animated fadeIn faster"></app-user-list>
-    <ng-template #elseLoadingBlock>
-        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-    </ng-template>
+    <app-user-list *ngIf="loaded" [userListData]="userListData" class="animated fadeIn faster"></app-user-list>
+    
 </div>

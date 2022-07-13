@@ -35,12 +35,14 @@ export class UserService {
       mail: user.mail,
       role: user.role
     };
-    return this.http.put<UserApiResponseGeneric>(url, body);
+    return this.http.put<UserApiResponseGeneric>(url, body).pipe(
+      catchError(this.myHandleError));
   }
 
   deleteUser(id:number){
     const url = `${environment.apiEndpoint}/delete-user/${id}`;
-    return this.http.delete<UserApiResponseGeneric>(url);
+    return this.http.delete<UserApiResponseGeneric>(url).pipe(
+      catchError(this.myHandleError));
   }
 
   editUser(user: User){
@@ -57,12 +59,12 @@ export class UserService {
 
   myHandleError(err: HttpErrorResponse){
 
-    const noDatabaseConnection = 'No database connection';
+    const noDatabaseConnection = 'No database connection ❌';
 
     if(err.status === 0 || err.status === 500){
       return throwError(noDatabaseConnection);
     }else{
-      return throwError('Unknow error');
+      return throwError(err.message);
     }
 
   }

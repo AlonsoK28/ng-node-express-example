@@ -55,8 +55,8 @@ export class EditUserComponent implements OnInit {
 
     this.userService
       .editUser(userData)
-      .subscribe(
-        data => {
+      .subscribe({
+        next: data => {
           if (data.ok) {
             // close dialog from another component 
             // https://stackoverflow.com/questions/57822013/close-material-dialog-from-different-component-angular
@@ -70,7 +70,12 @@ export class EditUserComponent implements OnInit {
           } else {
             this._snackBar.open(`${data.message} ❌`, 'dismiss');
           }
-        }
+        },
+        error: (err) => {
+          this._snackBar.open(err, 'close');
+        },
+        complete: () => {}
+      }
       );
   }
 
